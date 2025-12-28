@@ -1,0 +1,54 @@
+version: 0.2
+
+# AWS CodeBuild Specification for Fast Food App
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo "🔧 Installing build tools..."
+      - echo "Node version:" $(node --version)
+      - echo "NPM version:" $(npm --version)
+      
+  pre_build:
+    commands:
+      - echo "🍔 ===== PRE-BUILD PHASE ====="
+      - echo "📦 Installing dependencies..."
+      - npm install
+      - echo "✅ Dependencies installed successfully!"
+      
+  build:
+    commands:
+      - echo "🔨 ===== BUILD PHASE ====="
+      - echo "📅 Build started on $(date)"
+      - echo "🧪 Running tests..."
+      - npm test
+      - echo "✅ Tests passed!"
+      
+      - echo "📝 Adding build metadata..."
+      - BUILD_TIME=$(date +%Y%m%d-%H%M%S)
+      - BUILD_ID="AWS-${CODEBUILD_BUILD_NUMBER}-${BUILD_TIME}"
+      - echo "Build ID:" $BUILD_ID
+      
+      # Update build version in HTML
+      - sed -i "s/1.0/1.0.${CODEBUILD_BUILD_NUMBER}/g" index.html
+      
+      - echo "✅ Build completed successfully!"
+      
+  post_build:
+    commands:
+      - echo "📦 ===== POST-BUILD PHASE ====="
+      - echo "📋 Creating deployment package..."
+      - echo "Files to be deployed:"
+      - ls -lh
+      - echo "✅ Build artifacts ready for deployment!"
+
+artifacts:
+  files:
+    - '**/*'
+  name: fastfood-app-build-$(date +%Y%m%d-%H%M%S)
+  
+cache:
+  paths:
+    - 'node_modules/**/*'
