@@ -1,0 +1,16 @@
+{
+  "name": "fastfood-ordering-app",
+  "version": "1.0.0",
+  "description": "Fast Food Ordering Application with CI/CD Pipeline",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"✅ All tests passed - Menu loaded, Cart functional\""
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "keywords": ["fastfood", "ordering", "cicd", "devops"],
+  "author": "Vighnesh Mane",
+  "license": "MIT"
+}

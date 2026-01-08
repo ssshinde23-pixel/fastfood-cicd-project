@@ -1,0 +1,39 @@
+version: 0.0
+os: linux
+
+# AWS CodeDeploy Application Specification
+
+files:
+  - source: /
+    destination: /home/ubuntu/fastfood-app
+
+permissions:
+  - object: /home/ubuntu/fastfood-app
+    pattern: "**"
+    owner: ubuntu
+    group: ubuntu
+    mode: 755
+    type:
+      - directory
+      - file
+
+hooks:
+  BeforeInstall:
+    - location: scripts/install_dependencies.sh
+      timeout: 300
+      runas: root
+      
+  ApplicationStop:
+    - location: scripts/stop_application.sh
+      timeout: 120
+      runas: ubuntu
+      
+  ApplicationStart:
+    - location: scripts/start_application.sh
+      timeout: 300
+      runas: ubuntu
+      
+  ValidateService:
+    - location: scripts/validate_service.sh
+      timeout: 300
+      runas: ubuntu
