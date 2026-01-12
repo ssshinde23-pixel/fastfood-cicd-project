@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBite - Fast Food Delivery</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-content">
+                    <div class="logo">
+                        <span class="logo-icon">🍔</span>
+                        <span class="logo-text">Quick<span>Bite</span></span>
+                    </div>
+                    <ul class="nav-menu">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                    <button class="cart-btn" id="cartBtn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Delicious Food <span class="gradient-text">Delivered Fast</span></h1>
+                <p class="hero-subtitle">Order your favorite meals and get them delivered in 30 minutes!</p>
+                <div class="hero-features">
+                    <div class="feature">
+                        <i class="fas fa-clock"></i>
+                        <span>30 Min Delivery</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-utensils"></i>
+                        <span>Fresh Food</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-star"></i>
+                        <span>Top Rated</span>
+                    </div>
+                </div>
+                <a href="#menu" class="btn btn-primary">Order Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <h2 class="section-title">Our Menu</h2>
+            <p class="section-subtitle">Choose from our delicious selection</p>
+            
+            <!-- Category Filters -->
+            <div class="menu-filters">
+                <button class="filter-btn active" data-category="all">
+                    <i class="fas fa-th"></i> All Items
+                </button>
+                <button class="filter-btn" data-category="burgers">
+                    🍔 Burgers
+                </button>
+                <button class="filter-btn" data-category="pizza">
+                    🍕 Pizza
+                </button>
+                <button class="filter-btn" data-category="sides">
+                    🍟 Sides
+                </button>
+                <button class="filter-btn" data-category="drinks">
+                    🥤 Drinks
+                </button>
+            </div>
+
+            <!-- Menu Items Grid (populated by JavaScript) -->
+            <div class="menu-grid" id="menuGrid">
+                <div class="loading">Loading menu...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose QuickBite?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-bolt fa-3x"></i>
+                    <h3>Lightning Fast</h3>
+                    <p>Get your food delivered in 30-40 minutes or it's free!</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-leaf fa-3x"></i>
+                    <h3>Fresh Ingredients</h3>
+                    <p>We use only the freshest ingredients in all our dishes</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-heart fa-3x"></i>
+                    <h3>Made with Love</h3>
+                    <p>Every dish is prepared with care and attention to detail</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt fa-3x"></i>
+                    <h3>Safe & Hygienic</h3>
+                    <p>Maintaining highest hygiene and safety standards</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-phone fa-2x"></i>
+                        <h3>Call Us</h3>
+                        <p>+91 9876543210</p>
+                        <p>Available 24/7</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope fa-2x"></i>
+                        <h3>Email Us</h3>
+                        <p>order@quickbite.com</p>
+                        <p>support@quickbite.com</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt fa-2x"></i>
+                        <h3>Location</h3>
+                        <p>Ambarnath, Maharashtra</p>
+                        <p>Mumbai Region, India</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2><i class="fas fa-shopping-cart"></i> Your Cart</h2>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart">🛒 Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total Amount:</span>
+                <span id="cartTotal">₹0</span>
+            </div>
+            <button class="btn btn-primary btn-block" id="checkoutBtn">
+                <i class="fas fa-check-circle"></i> Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h2><i class="fas fa-clipboard-check"></i> Complete Your Order</h2>
+            <form id="checkoutForm">
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> Full Name *</label>
+                    <input type="text" id="customerName" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-phone"></i> Phone Number *</label>
+                    <input type="tel" id="customerPhone" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-map-marker-alt"></i> Delivery Address *</label>
+                    <textarea id="customerAddress" rows="3" placeholder="House no., Street, Area, City" required></textarea>
+                </div>
+                
+                <div class="order-summary">
+                    <h3>Order Summary</h3>
+                    <div id="summaryItems"></div>
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">₹0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery Fee:</span>
+                        <span>₹40</span>
+                    </div>
+                    <div class="summary-total">
+                        <strong>Total Amount:</strong>
+                        <strong><span id="summaryTotal">₹0</span></strong>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">
+                    <i class="fas fa-check"></i> Place Order
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content success-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Order Placed Successfully!</h2>
+            <p class="order-id">Order ID: <span id="displayOrderId"></span></p>
+            <p class="delivery-time">Estimated Delivery: <span id="displayDeliveryTime"></span></p>
+            <button class="btn btn-primary" onclick="closeSuccessModal()">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🍔 QuickBite</h3>
+                    <p>Delicious food delivered fast to your doorstep</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 QuickBite. Built with Jenkins & AWS CI/CD Pipeline</p>
+                <p class="build-info">Build Version: <span id="buildVersion">1.0</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
